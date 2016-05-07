@@ -1,0 +1,27 @@
+<%= form_for @listing do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title, class: 'form-control' %><br/>
+
+  <%= f.label :address %>:
+  <%= f.text_field :address, class: 'form-control' %><br/>
+
+  <%= f.label "Price" %>:
+  <%= f.text_field :price, class: 'form-control' %><br/>
+
+  <%= f.label "Bedrooms" %>:
+  <%= f.text_field :bed, class: 'form-control' %><br/>
+
+  <%= f.label :bath %>:
+  <%= f.text_field :bath, class: 'form-control' %><br/>
+
+  <%= f.label :half_bath %>:
+  <%= f.text_field :half_bath, class: 'form-control' %><br/>
+
+  <%= f.label :square_foot %>:
+  <%= f.text_field :square_foot, class: 'form-control' %><br/>
+
+  <%= f.label :description %>:
+  <%= f.text_field :description, class: 'form-control' %><br/>
+
+  <%= f.submit "Save", class: "btn btn-primary"%>
+<% end %>

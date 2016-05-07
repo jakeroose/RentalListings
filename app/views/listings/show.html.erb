@@ -1,0 +1,10 @@
+<h1><%= @listing.title %></h1>
+<span>Address: <%= @listing.address %></span><br/>
+<span>Price: <%= @listing.price %></span><br/>
+<span>Bedrooms: <%= @listing.bed %></span><br/>
+<span>Bathrooms: <%= @listing.bath %></span><br/>
+<span>Half Baths: <%= @listing.half_bath %></span><br/>
+<span>Square Footage: <%= @listing.square_foot %></span><br/>
+<span>Description: <%= @listing.description %></span><br/>
+<%= link_to "Edit", edit_listing_path %>
+<%= link_to "Delete", listing_path(@listing), method: :delete, data: { confirm: "Are you sure?" } %>

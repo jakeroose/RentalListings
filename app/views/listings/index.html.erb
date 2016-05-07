@@ -1,0 +1,6 @@
+<% @listings.each do |l| %>
+  <h2><%= link_to l.title, l %></h2>
+  <span>Price: <%= l.price %>, Bed: <%= l.bed %>, Bath: <%= l.bath %>, Hf. Bath: <%= l.half_bath ? l.half_bath : "0" %></span><br/>
+<% end %>
+<br/>
+<%= link_to "New Listing", new_listing_path %>
