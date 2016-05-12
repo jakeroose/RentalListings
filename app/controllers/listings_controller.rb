@@ -18,7 +18,7 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to @listing
     else
-      render "New"
+      render "new"
     end
   end
 
@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
     if @listing.update(listings_params)
       redirect_to @listing
     else
-      render "Edit"
+      render "edit"
     end
   end
 
@@ -41,7 +41,7 @@ class ListingsController < ApplicationController
   private
 
   def listings_params
-    params.require(:listing).permit(:title, :description, :address, :bed, :bath, :half_bath, :square_foot, :price)
+    params.require(:listing).permit(:title, :description, :address, :bed, :bath, :half_bath, :square_foot, :price, :image)
   end
 
   def find_listing
