@@ -1,6 +1,9 @@
 <% @listings.each do |l| %>
-  <h2><%= link_to l.title, l %></h2>
-  <span>Price: <%= l.price %>, Bed: <%= l.bed %>, Bath: <%= l.bath %>, Hf. Bath: <%= l.half_bath ? l.half_bath : "0" %></span><br/>
+  <div class='card'>
+    <h2 class='card-title'><%= link_to l.title, l %></h2>
+    <p class='card-text'>Price: <%= l.price %>, Bed: <%= l.bed %>, Bath: <%= l.bath %>, Hf. Bath: <%= l.half_bath ? l.half_bath : "0" %></p>
+    <%= link_to "View Property", l %>
+  </div>
 <% end %>
 <br/>
 <%= link_to "New Listing", new_listing_path %>

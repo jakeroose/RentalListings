@@ -13,3 +13,4 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'devise', '~> 4.1'
+gem 'paperclip', '~> 4.2.0'
