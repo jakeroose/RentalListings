@@ -7,13 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class='navbar navbar-default'>
+  <div class='navbar navbar-inverse'>
     <div class='container'>
       <div class="col-md-8 col-md-offset-2">
         <div class="navbar-brand">
-          Clemson Rentals
+          <%= link_to "Clemson Rentals", root_path, class: 'brand' %>
         </div>
-        <ul class='nav navbar-nav'>
+        <ul class='nav navbar-nav navbar-right'>
           <li><%= link_to "All Listings", root_path %></li>
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Policies", policies_path %></li>

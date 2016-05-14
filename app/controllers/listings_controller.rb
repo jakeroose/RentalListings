@@ -41,7 +41,7 @@ class ListingsController < ApplicationController
   private
 
   def listings_params
-    params.require(:listing).permit(:title, :description, :address, :bed, :bath, :half_bath, :square_foot, :price, :image, images_files: [])
+    params.require(:listing).permit(:title, :description, :address, :bed, :bath, :half_bath, :square_foot, :price, :image, :appliances, :features, :schools, images_files: [])
   end
 
   def find_listing
