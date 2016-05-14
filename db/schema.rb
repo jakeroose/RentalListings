@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512014334) do
+ActiveRecord::Schema.define(version: 20160514022933) do
+
+  create_table "images", force: true do |t|
+    t.integer  "listing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+    t.string   "file_id"
+    t.string   "file_filename"
+    t.string   "file_size"
+    t.string   "file_content_type"
+  end
 
   create_table "listings", force: true do |t|
     t.string   "title"
@@ -43,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160512014334) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

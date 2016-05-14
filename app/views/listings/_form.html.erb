@@ -1,6 +1,8 @@
 <%= form_for @listing, html: { multipart: true } do |f| %>
   <%= f.file_field :image, class: 'form-control' %><br/>
 
+  <%= f.attachment_field :images_files, class: 'form-control', multiple: true %><br/>
+
   <%= f.label :title %>:
   <%= f.text_field :title, class: 'form-control' %><br/>
 
