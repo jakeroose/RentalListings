@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  load_and_authorize_resource
 
   def index
     @listings = Listing.all.order("created_at DESC")
