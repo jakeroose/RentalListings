@@ -1,8 +1,8 @@
 <% @listings.each do |l| %>
   <div class='card'>
     <h2 class='card-title'><%= link_to l.title, l %></h2>
+    <% if l.images %><%= link_to (image_tag attachment_url(l.images[0], :file, :fill, 300, 200)), l %><% end %></br>
     <p class='card-text'>Price: <%= l.price %>, Bed: <%= l.bed %>, Bath: <%= l.bath %>, Hf. Bath: <%= l.half_bath ? l.half_bath : "0" %></p>
-    <%= link_to (image_tag l.image.url(:small)), l %><br/>
     <%= link_to "View Property", l %>
   </div>
 <% end %>

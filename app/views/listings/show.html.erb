@@ -1,8 +1,9 @@
 <h1><%= @listing.title %></h1>
-<span><%= image_tag @listing.image.url(:medium) %></span>
+<div class='images-container'>
 <% @listing.images.each do |i| %>
-  <%= image_tag attachment_url(i, :file, :fill, 300, 300) %>
+  <%= image_tag attachment_url(i, :file, :fill, 300, 200) %>
 <% end %>
+</div>
 <span>Address: <%= @listing.address %></span><br/>
 <span>Price: <%= @listing.price %></span><br/>
 <span>Bedrooms: <%= @listing.bed %></span><br/>
