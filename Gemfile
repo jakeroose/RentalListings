@@ -17,3 +17,4 @@ gem 'paperclip', '~> 4.2.0'
 gem 'refile', '~> 0.6.2', require: "refile/rails"
 gem 'refile-mini_magick'
 gem 'cancan'
+gem 'ransack'

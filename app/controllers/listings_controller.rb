@@ -4,7 +4,8 @@ class ListingsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @listings = Listing.all.order("created_at DESC")
+    @search = Listing.ransack(params[:q])
+    @listings = @search.result
   end
 
   def show

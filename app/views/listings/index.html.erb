@@ -1,26 +1,31 @@
 <div class="page-header">
   <h1>All Rental Listings</h1>
   <%= link_to "Add New Listing", new_listing_path if can? :manage, @listing %>
-
 </div>
-<% @listings.each do |l| %>
-  <div class='row panel panel-default'>
-    <div class='panel-body'>
-      <div class='col-md-6'>
-        <% if l.images %><%= link_to (image_tag attachment_url(l.images[0], :file), class: 'thumbnail'), l %><% end %>
-      </div>
-      <div class='col-md-6'>
-        <h2><%= link_to l.title, l %></h2>
-        <span>
-          <b>Address</b>: <%= l.address %><br>
-          <b>Rent</b>: <%= l.price %><br>
-          <b>Beds</b>: <%= l.bed %><br>
-          <b>Baths</b>: <%= l.bath + l.half_bath.to_i %><br>
-        </span>
-        <br>
-        <%= link_to "View Property", l, class: 'btn btn-primary', role: 'button' %>
+
+<%= render 'search_form' %>
+<% if @listings.length > 0 %>
+  <% @listings.each do |l| %>
+    <div class='row panel panel-default'>
+      <div class='panel-body'>
+        <div class='col-md-6'>
+          <% if l.images %><%= link_to (image_tag attachment_url(l.images[0], :file), class: 'thumbnail'), l %><% end %>
+        </div>
+        <div class='col-md-6'>
+          <h2><%= link_to l.title, l %></h2>
+          <span>
+            <b>Address</b>: <%= l.address %><br>
+            <b>Rent</b>: <%= l.price %><br>
+            <b>Beds</b>: <%= l.bed %><br>
+            <b>Baths</b>: <%= l.bath + l.half_bath.to_i %><br>
+          </span>
+          <br>
+          <%= link_to "View Property", l, class: 'btn btn-primary', role: 'button' %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+<% else %>
+  <span>No listings were found :(</span>
 <% end %>
 <br/>

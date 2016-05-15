@@ -1,0 +1,19 @@
+<%= search_form_for @search do |f| %>
+  <div class='form-group'>
+    <%= f.label :title_cont, "Search for Listing" %>
+    <%= f.text_field :title_cont %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :price_gteq, "Price" %>
+    <%= f.text_field :price_gteq %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bed_gteq, "Beds" %>
+    <%= f.select :bed_gteq, (1..5) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bath_gteq, "Baths" %>
+    <%= f.select :bath_gteq, (1..5) %>
+  </div>
+  <%= f.submit "Search", class: 'btn btn-default' %>
+<% end %>
