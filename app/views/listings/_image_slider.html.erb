@@ -1,0 +1,7 @@
+<div class='images-container row'>
+  <div class='listing-images-slider'>
+    <% @listing.images.each do |i| %>
+      <%= image_tag attachment_url(i, :file, :fill, 300, 200) %>
+    <% end %>
+  </div>
+</div>

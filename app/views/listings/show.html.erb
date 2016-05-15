@@ -1,40 +1,46 @@
 <div class='page-header'>
-  <h1><%= @listing.title %></h1>
-</div>
-<div class='images-container col-md-6'>
-  <% @listing.images.each do |i| %>
-    <%= image_tag attachment_url(i, :file, :fill, 300, 200) %>
-  <% end %>
-</div>
-<div class='col-md-6'>
-  <span>Address: <%= @listing.address %></span><br>
-  <span>Price: <%= @listing.price %></span><br>
-  <span>Bedrooms: <%= @listing.bed %></span><br>
-  <span>Bathrooms: <%= @listing.bath %></span><br>
-  <span>Half Baths: <%= @listing.half_bath %></span><br>
-  <span>Square Footage: <%= @listing.square_foot %></span><br>
-  <% if @listing.appliances %>
-    <span>Appliances:
-      <ul class='list-inline'>
-      <% @listing.appliances.split(',').each do |a| %>
-        <li><%= a %></li>
-      <% end %>
-      </ul>
-    </span><br/>
-  <% end %>
-  <% if @listing.features %>
-    <span>Features:
-      <ul class='list-inline'>
-      <% @listing.features.split(',').each do |a| %>
-        <li><%= a %></li>
-      <% end %>
-      </ul>
-    </span><br/>
-  <% end %>
-  <span>Schools: <%= @listing.schools %></span><br/>
-  <span>Description: <%= @listing.description %></span><br/>
+  <h2><%= @listing.title %><br><small><%= @listing.address %></small></h2>
   <% if can? :manage, @listing %>
-    <%= link_to "Edit", edit_listing_path %>
-    <%= link_to "Delete", listing_path(@listing), method: :delete, data: { confirm: "Are you sure?" } %>
+    <div class='row'>
+    <%= link_to "Edit", edit_listing_path, class: 'btn btn-default' %>
+    <%= link_to "Delete", listing_path(@listing), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default' %>
+    </div>
   <% end %>
+</div>
+<%= render 'image_slider' %>
+<div class='property-details'>
+  <div class='panel panel-default'>
+    <div class='panel-body'><h3>Property Details</h3></div>
+    <div class='panel-body'>
+      <span>Price: <%= @listing.price %></span><br>
+      <span><b><%= @listing.bed %></b> Beds</span><br>
+      <span><b><%= @listing.bath %></b> Baths</span><br>
+      <% unless @listing.half_bath.nil? || @listing.half_bath == 0 %><span><b><%= @listing.half_bath %></b> Half Baths</span><br><% end %>
+      <% if @listing.square_foot %>
+        <span><b><%= @listing.square_foot %>+</b> sq. feet</span><br>
+      <% else %>
+        <span><b>Square Footage Unavailable</b></span>
+      <% end %>
+    </div>
+    <% if @listing.appliances %>
+      <span>Appliances:
+        <ul class='list-default'>
+        <% @listing.appliances.split(',').each do |a| %>
+          <li><%= a %></li>
+        <% end %>
+        </ul>
+      </span><br/>
+    <% end %>
+    <% if @listing.features %>
+      <span>Features:
+        <ul class='list-inline'>
+        <% @listing.features.split(',').each do |a| %>
+          <li><%= a %></li>
+        <% end %>
+        </ul>
+      </span><br/>
+    <% end %>
+    <span>Schools: <%= @listing.schools %></span><br/>
+    <span>Description: <%= @listing.description %></span><br/>
+  </div> <!-- end of panel -->
 </div>

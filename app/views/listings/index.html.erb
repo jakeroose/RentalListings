@@ -1,3 +1,8 @@
+<div class="page-header">
+  <h1>All Rental Listings</h1>
+  <%= link_to "Add New Listing", new_listing_path if can? :manage, @listing %>
+
+</div>
 <% @listings.each do |l| %>
   <div class='row panel panel-default'>
     <div class='panel-body'>
@@ -19,4 +24,3 @@
   </div>
 <% end %>
 <br/>
-<%= link_to "New Listing", new_listing_path if can? :manage, @listing %>
