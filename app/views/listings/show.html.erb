@@ -1,26 +1,38 @@
 <div class='page-header'>
-  <h2><%= @listing.title %><br><small><%= @listing.address %></small></h2>
+  <h2><%= @listing.title %><span class='pull-right'>$<%= @listing.max_price %></span><br><small><%= @listing.address %></small></h2>
   <% if can? :manage, @listing %>
     <div class='row'>
     <%= link_to "Edit", edit_listing_path, class: 'btn btn-default' %>
     <%= link_to "Delete", listing_path(@listing), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default' %>
     </div>
   <% end %>
-</div>
 <% if current_user %>
   <% unless current_user.favorite_listings.include?(@listing) %>
   <%= link_to 'Add to favorites', favorite_listings_path(@listing), method: :post %>
   <% else %>
   <%= link_to 'Remove from favorites', favorite_listing_path(@listing), method: :delete %><% end %>
 <% else %>
-  <%= link_to 'Add to favorites', notice: 'You must be logged to save a listing' %>
+  <%= link_to 'Add to favorites', new_user_registration_path %>
 <% end %>
+</div>
+<p>
+  <b><%= @listing.bed %></b> Beds
+  <b><%= @listing.bath %></b> Baths
+  <b>Pets</b> <%= @listing.pets %>
+  <% unless @listing.half_bath.nil? || @listing.half_bath == 0 %><b><%= @listing.half_bath %></b> Half Baths <% end %>
+  <% if @listing.square_foot %>
+    <b><%= @listing.square_foot %>+</b> sq. feet
+  <% else %>
+    <b>Square Footage Unavailable</b>
+  <% end %>
+</p>
 <%= render 'image_slider' %>
 <div class='property-details'>
   <div class='panel panel-default'>
     <div class='panel-body'><h3>Property Details</h3></div>
     <div class='panel-body'>
-      <span>Price: <%= @listing.price %></span><br>
+      <span>Pets: <%= @listing.pets %></span><br>
+      <span>Price: <%= @listing.max_price %></span><br>
       <span><b><%= @listing.bed %></b> Beds</span><br>
       <span><b><%= @listing.bath %></b> Baths</span><br>
       <% unless @listing.half_bath.nil? || @listing.half_bath == 0 %><span><b><%= @listing.half_bath %></b> Half Baths</span><br><% end %>

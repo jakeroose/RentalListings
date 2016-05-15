@@ -29,14 +29,14 @@
         <ul class='nav navbar-nav navbar-right'>
           <% if user_signed_in? %>
             <li class='drowdown'>
-              <a  class="dropdown-toggle" type="button" id="dropdownMenu1"
+              <button class="dropdown-toggle btn btn-info" type="button" id="dropdownMenu1"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 My Account
                 <span class='caret'></span>
-              </a>
+              </button>
               <ul class='dropdown-menu'>
-                <li><%= link_to "Account Settings", edit_user_registration_path %></li>
                 <li><%= link_to "My Profile", profile_path(current_user) %></li>
+                <li><%= link_to "Account Settings", edit_user_registration_path %></li>
                 <li role='separator' class='divider'></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
               </ul>
