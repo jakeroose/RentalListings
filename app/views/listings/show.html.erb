@@ -7,6 +7,14 @@
     </div>
   <% end %>
 </div>
+<% if current_user %>
+  <% unless current_user.favorite_listings.include?(@listing) %>
+  <%= link_to 'Add to favorites', favorite_listings_path(@listing), method: :post %>
+  <% else %>
+  <%= link_to 'Remove from favorites', favorite_listing_path(@listing), method: :delete %><% end %>
+<% else %>
+  <%= link_to 'Add to favorites', notice: 'You must be logged to save a listing' %>
+<% end %>
 <%= render 'image_slider' %>
 <div class='property-details'>
   <div class='panel panel-default'>
