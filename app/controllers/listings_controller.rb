@@ -1,11 +1,11 @@
 class ListingsController < ApplicationController
   before_action :find_listing, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
 
   def index
     @search = Listing.ransack(params[:q])
-    @listings = @search.result
+    @listings = @search.result.page(params[:page])
   end
 
   def show

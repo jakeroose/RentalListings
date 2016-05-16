@@ -1,0 +1,17 @@
+<div class='favorite-listing'>
+  <% if current_user %>
+    <% unless current_user.favorite_listings.include?(listing) %>
+      <%= link_to favorite_listings_path(listing), method: :post do %>
+        <span class='glyphicon glyphicon-heart' title='Add to favorites'></span>
+      <% end %>
+    <% else %>
+      <%= link_to favorite_listing_path(listing), method: :delete do %>
+        <span class='glyphicon glyphicon-heart favorited' title='Remove from favorites'></span>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_registration_path do %>
+      <span class='glyphicon glyphicon-heart'></span>
+    <% end %>
+  <% end %>
+</div>

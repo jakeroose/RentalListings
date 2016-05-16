@@ -18,3 +18,4 @@ gem 'refile', '~> 0.6.2', require: "refile/rails"
 gem 'refile-mini_magick'
 gem 'cancan'
 gem 'ransack'
+gem 'kaminari'

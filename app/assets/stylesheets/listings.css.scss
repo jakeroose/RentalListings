@@ -3,3 +3,112 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .images-container img { padding: 0 5px 5px 0; }
+
+// listings/show
+.full-listing-container {
+  margin-top: 15px;
+  header h2 {
+    display: block;
+    margin: 0;
+  }
+  .listing-address {
+    font-size: 1.1em;
+    color: #555;
+  }
+  // Property Details
+  .listing-body {
+    padding-right: 15px;
+  }
+  .property-details {
+    .details-header {
+      border-bottom: 3px solid #555;
+      color: #555;
+    }
+    .details-section {
+      border-bottom: 1px solid #bbb;
+      padding: 10px 0;
+      .section-label {
+        font-weight: bold;
+      }
+      .section-body {
+      }
+      .last { border-bottom: 0; }
+    }
+  }
+
+
+  // sidebar
+  .sidebar{
+    .sidebar-form {
+      padding: 10px 5px;
+      background-color: #ddd;
+      border-bottom: 2px solid #555;
+    }
+    .section {
+      border-top: 2px solid #555;
+      margin-top: 10px;
+    }
+
+  }
+}
+
+
+// listings/index
+.listing-container {
+  border-top: 3px solid #555;
+  box-shadow: 0 0 2px #555;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  max-height: 173px;
+  border-radius: 0 0 3px 3px;
+  position: relative;
+  .listing-title {
+    font-size: 2em;
+    display: block;
+  }
+  .listing-street-address {
+    font-size: 1.25em;
+    color: #555;
+  }
+  .listing-price {
+    display: block;
+    font-size: 1.5em;
+  }
+  .images-container { padding: 0; }
+  .listing-details {
+    padding-left: 15px;
+  }
+  .listed-details { line-height: 2em; }
+  .favorite-listing-button {
+    position: absolute;
+    right: 11px;
+    top: 2px;
+  }
+  .view-property-button {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+}
+
+.navbar .listing-search {
+  select {
+    display: inline-block;
+    height: 34px;
+    background-color: white;
+    border-radius: 4px;
+    min-width: 34px;
+  }
+
+  .navbar-text {
+    margin-top: 8px;
+  }
+}
+
+.favorite-listing {
+  color: #555555;
+  font-size: 25px;
+  .favorited {
+    color: #D9534F;
+  }
+}

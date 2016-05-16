@@ -1,31 +1,39 @@
+<%= render 'search_form' %>
 <div class="page-header">
   <h1>All Rental Listings</h1>
   <%= link_to "Add New Listing", new_listing_path if can? :manage, @listing %>
 </div>
-
-<%= render 'search_form' %>
 <% if @listings.length > 0 %>
   <% @listings.each do |l| %>
-    <div class='row panel panel-default'>
-      <div class='panel-body'>
-        <div class='col-md-6'>
-          <% if l.images %><%= link_to (image_tag attachment_url(l.images[0], :file), class: 'thumbnail'), l %><% end %>
-        </div>
-        <div class='col-md-6'>
-          <h2><%= link_to l.title, l %></h2>
-          <span>
-            <b>Address</b>: <%= l.address %><br>
-            <b>Rent</b>: <%= l.max_price %><br>
-            <b>Beds</b>: <%= l.bed %><br>
-            <b>Baths</b>: <%= l.bath + l.half_bath.to_i %><br>
-          </span>
-          <br>
-          <%= link_to "View Property", l, class: 'btn btn-primary', role: 'button' %>
-        </div>
+    <div class='listing-container'>
+      <div class='image-container'>
+        <% if l.images %>
+          <%= link_to (image_tag attachment_url(l.images[0], :file, :fill, 300, 170)), l %>
+        <% end %>
+      </div>
+      <div class='listing-details'>
+        <span class='listing-title'><%= link_to l.title, l %></span>
+        <span class='listing-street-address'><%= l.address %></span>
+        <span class='listing-price'><b>$<%= l.max_price %></b>/month</span>
+        <span class='listed-details'>
+          <b><%= l.bed %></b> Bd -
+          <b><%= l.bath + l.half_bath.to_i %></b> Ba -
+          <b><%= l.square_foot %>+</b> sq ft -
+          <b>Pets</b> <%= l.pets %>
+        </span>
+        <br>
+      </div>
+      <div class='favorite-listing-button'>
+        <%= render '/shared/favorite_listing', listing: l %>
+      </div>
+      <div class='view-property-button'>
+        <%= link_to "View Details", l, class: 'btn btn-danger', role: 'button' %>
       </div>
     </div>
   <% end %>
 <% else %>
   <span>No listings were found :(</span>
 <% end %>
-<br/>
+<div class='pull-right'>
+  <%= paginate @listings %>
+</div>
