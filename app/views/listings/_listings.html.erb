@@ -1,0 +1,44 @@
+<% if @listings.length > 0 %>
+  <% @listings.each do |l| %>
+    <div class='listing-container'>
+      <div class='image-container'>
+        <% if l.images %>
+          <%= link_to (image_tag attachment_url(l.images[0], :file, :fill, 300, 170)), l %>
+          <div class='images-badge'>
+            <span class='badge'><%= l.images.count %> <span class='glyphicon glyphicon-camera'></span></span>
+          </div>
+        <% end %>
+      </div>
+      <div class='listing-details'>
+        <span class='listing-title'><%= link_to l.title, l %></span>
+        <span class='listing-street-address'><%= l.address %></span>
+        <span class='listing-price'><b>
+          <% if l.min_price && l.max_price %>
+            $<%= l.min_price %>+
+          <% else %>
+            $<%= l.max_price || l.min_price %>
+          <% end %>
+          </b>/ month
+        </span>
+        <span class='listed-details'>
+          <b><%= l.bed %></b> Bd -
+          <b><%= l.bath + l.half_bath.to_i %></b> Ba -
+          <b><%= l.square_foot %>+</b> sq ft -
+          <b>Pets</b> <%= l.pets %>
+        </span>
+        <br>
+      </div>
+      <div class='favorite-listing-button'>
+        <%= render '/shared/favorite_listing', listing: l %>
+      </div>
+      <div class='view-property-button'>
+        <%= link_to "View Details", l, class: 'btn btn-danger', role: 'button' %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <span>No listings were found :(</span>
+<% end %>
+<div class='pull-right'>
+  <%= paginate @listings, remote: true %>
+</div>

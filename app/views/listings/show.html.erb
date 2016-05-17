@@ -1,16 +1,22 @@
 <div class='full-listing-container'>
   <header class='col-lg-9'>
-    <h2><%= @listing.title %><span class='pull-right'>$<%= @listing.max_price %></span></h2>
+    <h2><%= @listing.title %><span class='pull-right'>
+      <% if @listing.min_price && @listing.max_price %>
+        $<%= @listing.min_price %> - $<%= @listing.max_price %>
+      <% else %>
+        $<%= @listing.max_price || @listing.min_price %>
+      <% end %></span>
+    </h2>
     <span class='listing-address'><%= @listing.address %></span>
   </header>
   <aside class='col-lg-3 pull-right property-icons sidebar'>
-    <%= render '/shared/favorite_listing', listing: @listing %>
-    <% if can? :manage, @listing %>
-      <div class='row'>
-      <%= link_to "Edit", edit_listing_path, class: 'btn btn-default' %>
-      <%= link_to "Delete", listing_path(@listing), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default' %>
-      </div>
-    <% end %>
+    <div class='inline-buttons'>
+      <%= render '/shared/favorite_listing', listing: @listing %>
+      <% if can? :manage, @listing %>
+        <%= link_to "Edit", edit_listing_path, class: 'btn btn-default' %>
+        <%= link_to "Delete", listing_path(@listing), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default' %>
+      <% end %>
+    </div>
     <div class='sidebar-form section'>
       <%= render '/shared/more_info' %>
     </div>
@@ -28,7 +34,7 @@
       <% end %>
     </p>
     <%= render 'image_slider' %>
-    <div class='property-details row'>
+    <div class='property-details'>
       <div class='details-header row'>
         <h3>Property Details</h3>
       </div>
@@ -65,11 +71,15 @@
           </div>
           <div class='col-md-9 col-lg-10 section-body'>
             <% if @listing.appliances %>
-                <ul class='list'>
-                <% @listing.appliances.split(',').each do |a| %>
-                  <li><%= a %></li>
-                <% end %>
-                </ul>
+              <% @listing.appliances.split(',').in_groups(2, false).each do |arr| %>
+                <div class='col-lg-6 no-indent'>
+                  <ul class='list'>
+                    <% arr.each do |a| %>
+                      <li><%= a %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -81,11 +91,15 @@
           </div>
           <div class='col-md-9 col-lg-10 section-body'>
             <% if @listing.features %>
-                <ul class='list-default'>
-                <% @listing.features.split(',').each do |a| %>
-                  <li><%= a %></li>
-                <% end %>
-                </ul>
+              <% @listing.features.split(',').in_groups(2, false).each do |arr| %>
+                <div class='col-lg-6 no-indent'>
+                  <ul class='list'>
+                    <% arr.each do |a| %>
+                      <li><%= a %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>

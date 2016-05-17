@@ -1,66 +1,81 @@
 <%= form_for @listing, html: { multipart: true } do |f| %>
-  <div class='images-container'>
-    <% @listing.images.each do |i| %>
-      <%= image_tag attachment_url(i, :file, :fit, 200, 130) %>
-      <%= link_to 'Delete', image_path(i.id), method: :delete %>
-    <% end %>
+  <div class='col-md-12'>
+    <div class='images-container'>
+      <% @listing.images.each do |i| %>
+        <div class='form-image'>
+          <%= image_tag attachment_url(i, :file, :fit, 200, 130) %>
+          <div class='delete-image'>
+            <%= link_to image_path(i.id), method: :delete do %>
+              <span class='glyphicon glyphicon-remove' title='remove image'></span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :images_files, "Upload Pictures:" %>
+      <%= f.attachment_field :images_files, class: 'form-control', multiple: true %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :title %>:
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :property_type %>
+      <%= f.select :property_type, ["Apartment", "Studio", "House", "Other"] %>
+    </div>
+    <div class="form-group">
+      <%= f.label :pets %>
+      <%= f.select :pets, ["None", "OK", "Dogs Only", "Cats Only"] %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :address %>:
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
   </div>
   <div class='form-group'>
-    <%= f.label :images_files, "Upload Pictures:" %>
-    <%= f.attachment_field :images_files, class: 'form-control', multiple: true %>
+    <div class='col-md-6'>
+      <%= f.label :max_price, "Max Price" %>:
+      <%= f.text_field :max_price, class: 'form-control' %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.label :min_price, "Min Price:" %>
+      <%= f.text_field :min_price, class: 'form-control' %>
   </div>
-  <div class='form-group'>
-    <%= f.label :title %>:
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class='col-md-12'>
+    <div class='form-group'>
+      <%= f.label :bed, "Bedrooms" %>:
+      <%= f.text_field :bed, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :bath %>:
+      <%= f.text_field :bath, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :half_bath %>:
+      <%= f.text_field :half_bath, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :square_foot %>:
+      <%= f.text_field :square_foot, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :appliances, "Appliances (separate with commas)" %>:
+      <%= f.text_field :appliances, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :features, "Features (separate with commas)" %>:
+      <%= f.text_field :features, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :schools %>:
+      <%= f.text_field :schools, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :description %>:
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+    <%= f.submit "Save", class: "btn btn-primary"%>
+    <%= link_to "Cancel", root_path, class: 'btn btn-default', role: 'button' %>
   </div>
-  <div class="form-group">
-    <%= f.label :property_type %>
-    <%= f.select :property_type, ["Apartment", "Studio", "House", "Other"] %>
-  </div>
-  <div class="form-group">
-    <%= f.label :pets %>
-    <%= f.select :pets, ["None", "OK", "Dogs Only", "Cats Only"] %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :address %>:
-    <%= f.text_field :address, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :max_price, "Price" %>:
-    <%= f.text_field :max_price, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :bed, "Bedrooms" %>:
-    <%= f.text_field :bed, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :bath %>:
-    <%= f.text_field :bath, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :half_bath %>:
-    <%= f.text_field :half_bath, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :square_foot %>:
-    <%= f.text_field :square_foot, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :appliances, "Appliances (separate with commas)" %>:
-    <%= f.text_field :appliances, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :features, "Features (separate with commas)" %>:
-    <%= f.text_field :features, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :schools %>:
-    <%= f.text_field :schools, class: 'form-control' %>
-  </div>
-  <div class='form-group'>
-    <%= f.label :description %>:
-    <%= f.text_area :description, class: 'form-control' %>
-  </div>
-  <%= f.submit "Save", class: "btn btn-primary"%>
-  <%= link_to "Cancel", root_path, class: 'btn btn-default', role: 'button' %>
 <% end %>

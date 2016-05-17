@@ -6,6 +6,11 @@ class ListingsController < ApplicationController
   def index
     @search = Listing.ransack(params[:q])
     @listings = @search.result.page(params[:page])
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   def show
@@ -17,11 +22,12 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listings_params)
-
-    if @listing.save
-      redirect_to @listing
-    else
-      render "new"
+    respond_to do |format|
+      if @listing.save
+        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+      else
+        format.html { render action: "new" }
+      end
     end
   end
 
@@ -29,10 +35,12 @@ class ListingsController < ApplicationController
   end
 
   def update
-    if @listing.update(listings_params)
-      redirect_to @listing
-    else
-      render "edit"
+    respond_to do |format|
+      if @listing.update(listings_params)
+        format.html { redirect_to @listing }
+      else
+        format.html { render action: "edit" }
+      end
     end
   end
 

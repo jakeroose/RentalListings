@@ -1,14 +1,14 @@
-<div class='navbar navbar-default navbar-static-top'>
-  <div class='container listing-search'>
-    <%= search_form_for @search, class: 'navbar-form' do |f| %>
+<div class='navbar navbar-default'>
+  <div class='container-fluid listing-search'>
+    <%= search_form_for @search, class: 'navbar-form', remote: true do |f| %>
         <div class='form-group'>
           <%= f.label :address_cont, "Search for Listing", class: 'sr-only' %>
           <%= f.text_field :address_cont, placeholder: 'Search', class: 'form-control' %>
         </div>
         <div class='form-group'>
           <%= f.label :max_price_gteq, "Price Range", class: 'navbar-text' %>
-          <%= f.text_field :max_price_lteq, placeholder: 'Min', class: 'form-control' %>
-          <%= f.text_field :max_price_gteq, placeholder: 'Max', class: 'form-control' %>
+          <%= f.text_field :max_price_gteq, placeholder: 'Min', class: 'form-control' %>
+          <%= f.text_field :max_price_lteq, placeholder: 'Max', class: 'form-control' %>
         </div>
         <div class='form-group'>
           <%= f.label :bed_gteq, "Beds", class: 'navbar-text' %>
@@ -18,7 +18,7 @@
           <%= f.label :bath_gteq, "Baths", class: 'navbar-text' %>
           <%= f.select :bath_gteq, (1..5) %>
         </div>
-        <div class='form-group'>
+        <div class='form-group navbar-right'>
           <%= f.submit "Search", class: 'btn btn-danger' %>
         </div>
     <% end %>

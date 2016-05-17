@@ -2,7 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.images-container img { padding: 0 5px 5px 0; }
+.images-container img {
+  padding: 0 5px 5px 0;
+}
+
+.inline-buttons {
+  display: inline-flex;
+  a { margin-right: 10px; }
+}
+
+.no-indent ul {
+  padding-left: 0;
+}
+
+.listing-region {
+  display: -webkit-inline-box;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    margin-right: 10px;
+  }
+}
 
 // listings/show
 .full-listing-container {
@@ -52,12 +72,11 @@
   }
 }
 
-
 // listings/index
 .listing-container {
   border-top: 3px solid #555;
-  box-shadow: 0 0 2px #555;
-  margin-bottom: 5px;
+  box-shadow: 0 0 3px #bbb;
+  margin-bottom: 12px;
   display: -webkit-box;
   max-height: 173px;
   border-radius: 0 0 3px 3px;
@@ -74,7 +93,20 @@
     display: block;
     font-size: 1.5em;
   }
-  .images-container { padding: 0; }
+  .image-container {
+    position: relative;
+    .images-badge {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      .badge {
+        background-color: #333;
+      }
+    }
+  }
+  .images-container {
+    padding: 0;
+  }
   .listing-details {
     padding-left: 15px;
   }
@@ -91,6 +123,25 @@
   }
 }
 
+.images-container {
+  padding: 0;
+  display: inline-flex;
+  .form-image {
+    position: relative;
+    .delete-image {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      display: none;
+      a {
+        color: #B7302E;
+        font-size: 1.5em;
+      }
+    }
+  }
+}
+
+// Listings search bar
 .navbar .listing-search {
   select {
     display: inline-block;
@@ -112,3 +163,5 @@
     color: #D9534F;
   }
 }
+
+/* Form */

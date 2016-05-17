@@ -1,39 +1,14 @@
 <%= render 'search_form' %>
-<div class="page-header">
-  <h1>All Rental Listings</h1>
-  <%= link_to "Add New Listing", new_listing_path if can? :manage, @listing %>
+<div class='col-lg-12'>
+  <div class='listing-region'>
+    <h3>Clemson, SC Apartments and Homes for Rent</h3> 
+    <% if can? :manage, @listing %>
+      <%= link_to new_listing_path do %>
+        <span class='glyphicon glyphicon-plus'></span>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-<% if @listings.length > 0 %>
-  <% @listings.each do |l| %>
-    <div class='listing-container'>
-      <div class='image-container'>
-        <% if l.images %>
-          <%= link_to (image_tag attachment_url(l.images[0], :file, :fill, 300, 170)), l %>
-        <% end %>
-      </div>
-      <div class='listing-details'>
-        <span class='listing-title'><%= link_to l.title, l %></span>
-        <span class='listing-street-address'><%= l.address %></span>
-        <span class='listing-price'><b>$<%= l.max_price %></b>/month</span>
-        <span class='listed-details'>
-          <b><%= l.bed %></b> Bd -
-          <b><%= l.bath + l.half_bath.to_i %></b> Ba -
-          <b><%= l.square_foot %>+</b> sq ft -
-          <b>Pets</b> <%= l.pets %>
-        </span>
-        <br>
-      </div>
-      <div class='favorite-listing-button'>
-        <%= render '/shared/favorite_listing', listing: l %>
-      </div>
-      <div class='view-property-button'>
-        <%= link_to "View Details", l, class: 'btn btn-danger', role: 'button' %>
-      </div>
-    </div>
-  <% end %>
-<% else %>
-  <span>No listings were found :(</span>
-<% end %>
-<div class='pull-right'>
-  <%= paginate @listings %>
+<div id='listings-container' class='col-lg-12'>
+  <%= render 'listings' %>
 </div>
