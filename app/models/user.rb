@@ -6,4 +6,15 @@ class User < ActiveRecord::Base
 
   has_many :favorites
   has_many :favorite_listings, through: :favorites, source: :favorited, source_type: 'Listing'
+
+  # Mailboxer
+  acts_as_messageable
+
+  def mail_email(object)
+    email
+  end
+
+  def name
+    email
+  end
 end

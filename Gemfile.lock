@@ -33,6 +33,11 @@ GEM
       sass (~> 3.2)
     builder (3.2.2)
     cancan (1.6.10)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -54,6 +59,8 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
+    foreigner (1.6.1)
+      activerecord (>= 3.0.0)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -70,6 +77,10 @@ GEM
       activesupport (>= 3.0.0)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mailboxer (0.12.4)
+      carrierwave (>= 0.5.8)
+      foreigner (>= 0.9.1)
+      rails (>= 3.2.0)
     mime-types (2.99.1)
     mini_magick (4.5.1)
     minitest (5.8.4)
@@ -175,6 +186,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mailboxer
   paperclip (~> 4.2.0)
   rails (= 4.1.12)
   ransack

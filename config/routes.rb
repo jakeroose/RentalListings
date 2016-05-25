@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'profile'
 
   resources :favorite_listings, only: [:create, :destroy]
+
+  resources :conversations do
+    resources :messages
+  end
 end
