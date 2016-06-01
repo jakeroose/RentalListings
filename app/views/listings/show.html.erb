@@ -26,7 +26,7 @@
       <b><%= @listing.bed %></b> Beds -
       <b><%= @listing.bath %></b> Baths -
       <b>Pets</b> <%= @listing.pets %> -
-      <% unless @listing.half_bath.nil? || @listing.half_bath == 0 %><b><%= @listing.half_bath %></b> Half Baths <% end %>
+      <% unless @listing.half_bath.nil? || @listing.half_bath == 0 %><b><%= @listing.half_bath %></b> Half Baths -<% end %>
       <% if @listing.square_foot %>
         <b><%= @listing.square_foot %>+</b> sq. feet
       <% else %>
