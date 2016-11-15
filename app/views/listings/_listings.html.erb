@@ -1,0 +1,10 @@
+<% if @listings.length > 0 %>
+  <% @listings.each do |l| %>
+    <%= render 'listing',  l: l %>
+  <% end %>
+<% else %>
+  <span>No listings were found :(</span>
+<% end %>
+<div class='pull-right'>
+  <%= paginate @listings, remote: true %>
+</div>
