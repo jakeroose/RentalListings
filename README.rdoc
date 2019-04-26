@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails application for listing property rentals in Clemson, SC. I started working on this with the hope of setting it up for my landlord in exchange for rent. Their website was very out of date, there was no way to pay online, and I wanted to save money. 
 
-Things you may want to cover:
+Long story short, they went out of business before I finished. 
 
-* Ruby version
+Ruby version:  2.5.1
+Rails version: 5.2.3
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Features:
+- Add property listings to the website
+- Add photos and general information about the property to the listing
+- Search for a listing based on a price range, number of beds & baths, and address
+- Users can create an account and save listings that they are interested in
