@@ -1,14 +1,19 @@
 <%= render 'search_form' %>
-<div class='col-lg-12'>
-  <div class='listing-region'>
-    <h3>Clemson, SC Apartments and Homes for Rent</h3>
-    <% if can? :manage, @listing %>
-      <%= link_to new_listing_path do %>
-        <span class='glyphicon glyphicon-plus'></span>
+<div class="row">
+
+  <div class='col-12'>
+    <div class='listing-region'>
+      <h3>Clemson, SC Apartments and Homes for Rent</h3>
+      <% if can? :manage, @listing %>
+        <%= link_to new_listing_path do %>
+          <span class='glyphicon glyphicon-plus'></span>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
-<div id='listings-container' class='col-lg-12'>
-  <%= render 'listings' %>
+<div class="row">
+  <div id='listings-container' class='col-12'>
+    <%= render 'listings' %>
+  </div>
 </div>
